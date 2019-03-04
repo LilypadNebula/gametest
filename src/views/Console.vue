@@ -6,7 +6,12 @@
       <div class="consoleBody">
         <console-line v-for="line in history" :key="line.id" :display="line.text"></console-line>
         <console-line>
-          <input type="text" class="text-white bg-black focus:outline-none" @keyup.enter="send">
+          <input
+            ref="consoleInput"
+            type="text"
+            class="text-white bg-black focus:outline-none"
+            @keyup.enter="send"
+          >
         </console-line>
       </div>
     </div>
@@ -27,16 +32,21 @@ export default {
       echo(v, arg) {
         v.history.push({
           id: Math.floor(Math.random() * Math.random() * 1000),
-          text: arg
+          text: arg.join(" ")
         });
       }
     }
   }),
   methods: {
     send(e) {
+      this.history.push({
+        id: Math.floor(Math.random() * Math.random() * 1000),
+        text: e.target.value
+      });
       const input = parse(e.target.value)._;
       const command = head(input);
-      const args = input.splice(0, 1);
+      const args = input.slice(1);
+      e.target.value = "";
       if (has(this.commandList, command)) {
         this.commandList[command](this, args);
       } else {
@@ -46,6 +56,9 @@ export default {
         });
       }
     }
+  },
+  mounted() {
+    this.$refs.consoleInput.focus();
   }
 };
 </script>

@@ -190,6 +190,7 @@ module.exports = {
   fonts: {
     digi: ["Share Tech Mono", "monospace"],
     sans: [
+      "Quicksand",
       "system-ui",
       "BlinkMacSystemFont",
       "-apple-system",

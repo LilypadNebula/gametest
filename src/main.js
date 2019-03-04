@@ -5,7 +5,9 @@ import {
   faTimes,
   faHome,
   faTerminal,
-  faCommentAlt
+  faCommentAlt,
+  faShoppingCart,
+  faPiggyBank
 } from "@fortawesome/free-solid-svg-icons";
 import {
   FontAwesomeIcon,
@@ -14,9 +16,17 @@ import {
 import App from "./App.vue";
 import router from "./router";
 import "./registerServiceWorker";
-import store from './store'
+import store from "./store/";
 
-library.add(faCircle, faTimes, faHome, faTerminal, faCommentAlt);
+library.add(
+  faCircle,
+  faTimes,
+  faHome,
+  faTerminal,
+  faCommentAlt,
+  faShoppingCart,
+  faPiggyBank
+);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

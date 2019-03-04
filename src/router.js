@@ -31,6 +31,16 @@ export default new Router({
       path: "/whispr",
       name: "Whispr",
       component: () => import("./views/Whispr.vue")
+    },
+    {
+      path: "/oink",
+      name: "Oink",
+      component: () => import("./views/Oink.vue")
+    },
+    {
+      path: "/market",
+      name: "Market",
+      component: () => import("./views/Market.vue")
     }
   ]
 });
