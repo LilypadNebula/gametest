@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import ConsoleLine from "../components/ConsoleLine.vue";
-import TopBar from "../components/TopBar.vue";
+import ConsoleLine from "../../components/ConsoleLine.vue";
+import TopBar from "../../components/TopBar.vue";
 import { head, has } from "lodash";
 const parse = require("yargs-parser");
 
