@@ -12,7 +12,9 @@ export default new Vuex.Store({
   state: {
     funds: 0,
     storeItems: [],
-    ownedItems: []
+    ownedItems: [],
+    currentScreen: "home",
+    currentApp: "console"
   },
   mutations: {
     setFunds(state, amount) {
@@ -30,6 +32,12 @@ export default new Vuex.Store({
     buyStoreItem(state, id) {
       const temp = state.storeItems.findIndex(e => e.id === id);
       temp.bought = true;
+    },
+    setCurrentScreen(state, screen) {
+      state.currentScreen = screen;
+    },
+    setCurrentApp(state, app) {
+      state.currentApp = app;
     }
   },
   actions: {

@@ -1,24 +1,28 @@
 <template>
   <div class="main">
     <div class="screen">
-      <component :is="current"></component>
+      <component :is="currentApp"></component>
     </div>
     <div class="toolbar bg-blue flex items-center justify-around">
-      <Pushy @press-end="current = 'console'">
-          <font-awesome-icon icon="terminal" class="text-white mx-4" size="3x"></font-awesome-icon>
-          <p>Console</p>
+      <Pushy @press-end="setCurrentApp('console')">
+        <font-awesome-icon icon="terminal" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <p>Console</p>
       </Pushy>
-      <Pushy @press-end="current = 'whispr'">
-          <font-awesome-icon icon="comment-alt" class="text-white mx-4" size="3x"></font-awesome-icon>
-          <p>Whispr</p>
+      <Pushy @press-end="setCurrentApp('whispr')">
+        <font-awesome-icon icon="comment-alt" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <p>Whispr</p>
       </Pushy>
-      <Pushy @press-end="current = 'market'">
-          <font-awesome-icon icon="shopping-cart" class="text-white mx-4" size="3x"></font-awesome-icon>
-          <p>Market</p>
+      <Pushy @press-end="setCurrentApp('market')">
+        <font-awesome-icon icon="shopping-cart" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <p>Market</p>
       </Pushy>
-      <Pushy @press-end="current = 'oink'">
-          <font-awesome-icon icon="piggy-bank" class="text-white mx-4" size="3x"></font-awesome-icon>
-          <p>Oink Banking</p>
+      <Pushy @press-end="setCurrentApp('oink')">
+        <font-awesome-icon icon="piggy-bank" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <p>Oink Banking</p>
+      </Pushy>
+      <Pushy @press-end="setCurrentScreen('home')">
+        <font-awesome-icon icon="power-off" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <p>Log Off</p>
       </Pushy>
     </div>
   </div>
@@ -26,13 +30,15 @@
 
 <script>
 import posed from "vue-pose";
+import { mapState, mapMutations } from "vuex";
 
 export default {
+  name: "Desktop",
   components: {
-    Console: () => import('./Apps/Console'),
-    Market: () => import('./Apps/Market'),
-    Oink: () => import('./Apps/Oink'),
-    Whispr: () => import('./Apps/Whispr'),
+    Console: () => import("./Apps/Console"),
+    Market: () => import("./Apps/Market"),
+    Oink: () => import("./Apps/Oink"),
+    Whispr: () => import("./Apps/Whispr"),
     Pushy: posed.button({
       hoverable: true,
       pressable: true,
@@ -41,8 +47,11 @@ export default {
       press: { scale: 1.2 }
     })
   },
-  data: () => ({
-    current: 'console'
+  methods: {
+    ...mapMutations(["setCurrentApp", "setCurrentScreen"])
+  },
+  computed: mapState({
+    currentApp: "currentApp"
   })
 };
 </script>

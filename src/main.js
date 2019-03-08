@@ -7,14 +7,14 @@ import {
   faTerminal,
   faCommentAlt,
   faShoppingCart,
-  faPiggyBank
+  faPiggyBank,
+  faPowerOff
 } from "@fortawesome/free-solid-svg-icons";
 import {
   FontAwesomeIcon,
   FontAwesomeLayers
 } from "@fortawesome/vue-fontawesome";
 import App from "./App.vue";
-import "./registerServiceWorker";
 import store from "./store/";
 
 library.add(
@@ -24,7 +24,8 @@ library.add(
   faTerminal,
   faCommentAlt,
   faShoppingCart,
-  faPiggyBank
+  faPiggyBank,
+  faPowerOff
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

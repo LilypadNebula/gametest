@@ -5,13 +5,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
+  name: "Application",
   components: {
     Desktop: () => import("./views/Desktop"),
     Home: () => import("./views/Home")
   },
-  data: () => ({
-    current: "home"
+  computed: mapState({
+    current: "currentScreen"
   }),
   async mounted() {
     this.$store.dispatch("initGame");
