@@ -3,25 +3,25 @@
     <div class="screen">
       <component :is="currentApp"></component>
     </div>
-    <div class="toolbar bg-blue flex items-center justify-around">
+    <div class="toolbar bg-blue font-sans flex items-center justify-around">
       <Pushy @press-end="setCurrentApp('console')">
-        <font-awesome-icon icon="terminal" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <font-awesome-icon icon="terminal" class="text-white" size="3x"></font-awesome-icon>
         <p>Console</p>
       </Pushy>
       <Pushy @press-end="setCurrentApp('whispr')">
-        <font-awesome-icon icon="comment-alt" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <font-awesome-icon icon="comment-alt" class="text-white" size="3x"></font-awesome-icon>
         <p>Whispr</p>
       </Pushy>
       <Pushy @press-end="setCurrentApp('market')">
-        <font-awesome-icon icon="shopping-cart" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <font-awesome-icon icon="shopping-cart" class="text-white" size="3x"></font-awesome-icon>
         <p>Market</p>
       </Pushy>
       <Pushy @press-end="setCurrentApp('oink')">
-        <font-awesome-icon icon="piggy-bank" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <font-awesome-icon icon="piggy-bank" class="text-white" size="3x"></font-awesome-icon>
         <p>Oink Banking</p>
       </Pushy>
       <Pushy @press-end="setCurrentScreen('home')">
-        <font-awesome-icon icon="power-off" class="text-white mx-4" size="3x"></font-awesome-icon>
+        <font-awesome-icon icon="power-off" class="text-white" size="3x"></font-awesome-icon>
         <p>Log Off</p>
       </Pushy>
     </div>
