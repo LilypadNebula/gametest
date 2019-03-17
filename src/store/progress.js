@@ -7,7 +7,11 @@ const progress = {
     currentDay: 0,
     successfulHacks: 0,
     failedHacks: 0,
-    itemsOwned: 0
+    itemsOwned: 0,
+    /**
+     * @type {string[]}
+     */
+    storyText: null
   },
   mutations: {
     setStarted(state, started) {
@@ -21,6 +25,9 @@ const progress = {
     },
     hackFail(state) {
       state.failedHacks++;
+    },
+    setStory(state, text) {
+      state.storyText = [...text]
     }
   },
   actions: {

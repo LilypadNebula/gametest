@@ -11,7 +11,8 @@ export default {
   name: "Application",
   components: {
     Desktop: () => import("./views/Desktop"),
-    Home: () => import("./views/Home")
+    Home: () => import("./views/Home"),
+    SelfText: () => import("./views/SelfText")
   },
   computed: mapState({
     current: "currentScreen"

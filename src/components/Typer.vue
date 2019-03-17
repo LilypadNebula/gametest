@@ -1,8 +1,10 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col items-center font-sans text-5xl text-white h-full">
     <div class="flex">
-      <p>{{shownString}}</p>
-      <p class="cursor">|</p>
+      <p class="p-16">
+        {{shownString}}
+        <span class="cursor">|</span>
+      </p>
     </div>
     <button @click="clear" v-if="this.current < this.strings.length">Next</button>
     <button @click="$emit('done')" v-else>Done</button>
@@ -11,6 +13,14 @@
 
 <script>
 export default {
+  name: "Typer",
+  props: {
+    strings: {
+      /**@type {{new (): string[]}} */
+      type: Array,
+      required: true
+    }
+  },
   mounted() {
     this.interval = setInterval(this.typing, 100);
   },
@@ -18,14 +28,13 @@ export default {
     shownString: "",
     interval: null,
     current: 0,
-    stringSpot: 0,
-    strings: ["I really wanna test things", "Can't wait to do more testing"]
+    stringSpot: 0
   }),
   methods: {
     typing() {
       if (this.shownString === this.strings[this.current]) {
         this.current++;
-      this.stringSpot = 0;
+        this.stringSpot = 0;
         clearInterval(this.interval);
       } else {
         this.shownString += this.strings[this.current].slice(
@@ -36,7 +45,6 @@ export default {
       }
     },
     clear() {
-      
       this.interval = setInterval(this.removing, 100);
     },
     removing() {
@@ -54,9 +62,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 @keyframes blinky {
   0% {
+    opacity: 0;
+  }
+  50% {
     opacity: 1;
   }
   100% {
@@ -64,7 +75,19 @@ export default {
   }
 }
 .cursor {
-  animation: blinky 0.8s infinite;
+  animation: blinky 1.5s infinite;
+}
+
+div {
+  min-height: 50%;
+}
+
+button {
+  @apply text-white;
+}
+
+button:focus {
+  @apply outline-none;
 }
 </style>
 
